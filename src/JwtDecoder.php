@@ -1,11 +1,10 @@
 <?php
 
 
-namespace Maslennikov\Guards\Test;
+namespace Maslennikov\Guards;
 
 use Firebase\JWT\JWT;
 use Illuminate\Support\Facades\Log;
-use Maslennikov\Guards\JwtDecoderInterface;
 
 /**
  * Class JwtDecoder possible implementation of JwtDecoderInterface

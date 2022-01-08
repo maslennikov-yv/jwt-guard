@@ -7,6 +7,7 @@ use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\UserProvider;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
+use Maslennikov\Guards\JwtDecoder;
 use Maslennikov\Guards\JwtGuard;
 use Mockery\MockInterface;
 
