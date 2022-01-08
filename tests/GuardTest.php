@@ -1,0 +1,44 @@
+<?php
+
+namespace Maslennikov\Guards\Test;
+
+use Firebase\JWT\JWT;
+use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Contracts\Auth\UserProvider;
+use Illuminate\Foundation\Auth\User;
+use Illuminate\Http\Request;
+use Maslennikov\Guards\JwtGuard;
+use Mockery\MockInterface;
+
+class GuardTest extends TestCase
+{
+    /**
+     * Check Guard are working
+     * @return void
+     */
+    public function testGuardAreWorking()
+    {
+        $userId = '57e18e5e-c185-4d1c-8d79-4c383f490ec2';
+        $payload = array(
+            'sub' => $userId
+        );
+        $jwt = JWT::encode($payload, $this->private, 'RS256');
+        $provider = $this->mock(UserProvider::class,
+            function (MockInterface $mock) use ($userId) {
+                $mock->shouldReceive('retrieveById')
+                    ->with($userId)
+                    ->andReturn(new User());
+            }
+        );
+        $request = $this->mock(
+            Request::class,
+            function (MockInterface $mock) use ($jwt) {
+                $mock->shouldReceive('bearerToken')
+                    ->andReturn($jwt);
+            }
+        );
+        $decoder = new JwtDecoder($this->public);
+        $guard = new JwtGuard($provider, $request, $decoder);
+        $this->assertInstanceOf(Authenticatable::class, $guard->user());
+    }
+}
