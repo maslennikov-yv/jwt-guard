@@ -18,8 +18,7 @@ Auth::extend('jwt', function ($app, $name, array $config) use ($public_key) {
 ```
 
 ## Configuration
-Configure 'api' guard to use jwt as driver: 
-config/auth.php
+Configure 'api' guard to use jwt as driver in config/auth.php file
 ```
 'guards' => [
     'api' => [
