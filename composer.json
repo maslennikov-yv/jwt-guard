@@ -22,10 +22,10 @@
         "test": "vendor/bin/phpunit"
     },
     "require": {
-        "laravel/framework": "^8.78"
+        "laravel/framework": "^8.78",
+        "firebase/php-jwt": "^5.5"
     },
     "require-dev": {
-        "firebase/php-jwt": "^5.5",
         "orchestra/testbench": "^6.23",
         "phpunit/phpunit": "^9.5"
     }

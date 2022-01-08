@@ -7,6 +7,7 @@ use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\UserProvider;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Maslennikov\Guards\JwtDecoder;
 use Maslennikov\Guards\JwtGuard;
 use Mockery\MockInterface;
@@ -19,7 +20,7 @@ class GuardTest extends TestCase
      */
     public function testGuardAreWorking()
     {
-        $userId = '57e18e5e-c185-4d1c-8d79-4c383f490ec2';
+        $userId = Str::uuid()->toString();
         $payload = array(
             'sub' => $userId
         );
