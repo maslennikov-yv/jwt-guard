@@ -1,6 +1,6 @@
 <?php
 
-namespace Maslennikov\Guards\Test;
+namespace Platforma\Guards\Test;
 
 class TestCaseTest extends TestCase
 {

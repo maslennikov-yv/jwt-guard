@@ -1,5 +1,5 @@
 {
-    "name": "maslennikov-yv/jwt-guard",
+    "name": "platforma/jwt-guard",
     "description": "Laravel Guard Package",
     "authors": [
         {
@@ -10,12 +10,12 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Maslennikov\\Guards\\": "src/"
+            "Platforma\\Guards\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Maslennikov\\Guards\\Test\\": "tests/"
+            "Platforma\\Guards\\Test\\": "tests/"
         }
     },
     "scripts": {

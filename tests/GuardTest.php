@@ -1,6 +1,6 @@
 <?php
 
-namespace Maslennikov\Guards\Test;
+namespace Platforma\Guards\Test;
 
 use Firebase\JWT\JWT;
 use Illuminate\Contracts\Auth\Authenticatable;
@@ -8,8 +8,8 @@ use Illuminate\Contracts\Auth\UserProvider;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use Maslennikov\Guards\JwtDecoder;
-use Maslennikov\Guards\JwtGuard;
+use Platforma\Guards\JwtDecoder;
+use Platforma\Guards\JwtGuard;
 use Mockery\MockInterface;
 
 class GuardTest extends TestCase

@@ -1,8 +1,20 @@
 # Laravel JWT Guard
 
 ## Installation
+
+Add "repositories" block before "require" in composer.json
+
+```json
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@git.dclouds.ru:iron-maiden/jwt-guard.git"
+        }
+    ]
 ```
-composer require maslennikov-yv/jwt-guard
+
+```
+composer require "platforma/jwt-guard:dev-main"
 ```
 
 ## Preparation

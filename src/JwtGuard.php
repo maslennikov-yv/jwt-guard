@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Maslennikov\Guards;
+namespace Platforma\Guards;
 
 
 use Illuminate\Auth\GuardHelpers;

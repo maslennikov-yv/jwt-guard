@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Maslennikov\Guards;
+namespace Platforma\Guards;
 
 
 interface JwtDecoderInterface

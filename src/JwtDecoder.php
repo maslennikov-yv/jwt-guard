@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Maslennikov\Guards;
+namespace Platforma\Guards;
 
 use Firebase\JWT\JWT;
 use Illuminate\Support\Facades\Log;

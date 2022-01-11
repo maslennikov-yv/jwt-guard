@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Maslennikov\Guards\Test;
+namespace Platforma\Guards\Test;
 
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 
