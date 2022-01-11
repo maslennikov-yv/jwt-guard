@@ -14,7 +14,7 @@ Add "repositories" block before "require" in composer.json
 ```
 
 ```
-composer require "platforma/jwt-guard:dev-main"
+ composer require "platforma/jwt-guard"
 ```
 
 ## Preparation
