@@ -18,7 +18,7 @@ class GuardTest extends TestCase
      * Check Guard are working
      * @return void
      */
-    public function testGuardAreWorking()
+    public function testGuard()
     {
         $userId = Str::uuid()->toString();
         $payload = array(
