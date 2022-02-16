@@ -16,6 +16,7 @@ Auth::extend('jwt', function ($app, $name, array $config) use ($public_key) {
     );
 });
 ```
+TIP: _If necessary, you can use your own Decoder class implementing JwtDecoderInterface (italic)_
 
 ## Configuration
 Configure 'api' guard to use jwt as driver in config/auth.php file
