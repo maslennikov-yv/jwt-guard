@@ -1,5 +1,5 @@
 {
-    "name": "platforma/jwt-guard",
+    "name": "maslennikov-yv/jwt-guard",
     "description": "Laravel Guard Package",
     "authors": [
         {
@@ -10,23 +10,24 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Platforma\\Guards\\": "src/"
+            "Maslennikovyv\\Guards\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Platforma\\Guards\\Test\\": "tests/"
+            "Maslennikovyv\\Guards\\Test\\": "tests/"
         }
     },
     "scripts": {
         "test": "vendor/bin/phpunit"
     },
     "require": {
-        "laravel/framework": "^8.0|^9.0",
-        "firebase/php-jwt": "^5.5"
+        "laravel/framework": "^8.0|^9.0|^10.0"
+
     },
     "require-dev": {
-        "orchestra/testbench": "^6.23",
-        "phpunit/phpunit": "^9.5"
+        "phpunit/phpunit": "^9.6",
+        "orchestra/testbench": "^6.27",
+        "firebase/php-jwt": "^6.5"
     }
 }

@@ -1,15 +1,17 @@
 <?php
 
-namespace Platforma\Guards\Test;
+namespace Maslennikovyv\Guards\Test;
 
+use Exception;
 use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\UserProvider;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
-use Platforma\Guards\JwtDecoder;
-use Platforma\Guards\JwtGuard;
+use Maslennikovyv\Guards\JwtGuard;
 use Mockery\MockInterface;
 
 class GuardTest extends TestCase
@@ -24,7 +26,7 @@ class GuardTest extends TestCase
         $payload = array(
             'sub' => $userId
         );
-        $jwt = JWT::encode($payload, $this->private, 'RS256');
+        $token = JWT::encode($payload, $this->private, 'RS256');
         $provider = $this->mock(UserProvider::class,
             function (MockInterface $mock) use ($userId) {
                 $mock->shouldReceive('retrieveById')
@@ -34,13 +36,21 @@ class GuardTest extends TestCase
         );
         $request = $this->mock(
             Request::class,
-            function (MockInterface $mock) use ($jwt) {
+            function (MockInterface $mock) use ($token) {
                 $mock->shouldReceive('bearerToken')
-                    ->andReturn($jwt);
+                    ->andReturn($token);
             }
         );
-        $decoder = new JwtDecoder($this->public);
-        $guard = new JwtGuard($provider, $request, $decoder);
+
+        $guard = new JwtGuard($provider, $request, function ($token) {
+            try {
+                $content = JWT::decode($token, new Key($this->public, 'RS256'));
+                return property_exists($content, 'sub') ? $content->sub : null;
+            } catch (Exception $e) {
+                Log::debug($e->getMessage());
+            }
+            return null;
+        });
         $this->assertInstanceOf(Authenticatable::class, $guard->user());
     }
 }

@@ -2,30 +2,23 @@
 
 ## Installation
 
-Add "repositories" block before "require" in composer.json
-
-```json
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "git@git.dclouds.ru:iron-maiden/jwt-guard.git"
-        }
-    ]
 ```
-
-```
- composer require "platforma/jwt-guard"
+ composer require "maslennikov-yv/jwt-guard"
 ```
 
 ## Preparation
 Place the following code in the boot() method of AuthServiceProvider
 ```
 Auth::extend('jwt', function ($app, $name, array $config) use ($public_key) {
-    return new JwtGuard(
-        $app['auth']->createUserProvider($config['provider']),
-        $app['request'],
-        new JwtDecoder($public_key)
-    );
+    return new JwtGuard($provider, $request, function ($token) use ($public_key) {
+        try {
+            $content = JWT::decode($token, new Key($public_key, 'RS256'));
+            return property_exists($content, 'sub') ? $content->sub : null;
+        } catch (Exception $e) {
+            Log::debug($e->getMessage());
+        }
+        return null;
+    });
 });
 ```
 
