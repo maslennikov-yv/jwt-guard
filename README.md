@@ -22,6 +22,12 @@ Auth::extend('jwt', function ($app, $name, array $config) use ($public_key) {
 });
 ```
 
+This example uses the Firebase JWT library which requires installation:
+```
+composer require firebase/php-jwt
+```
+But you can use any other library that allows you to validate JWT and extract useful data from it
+
 ## Configuration
 Configure 'api' guard to use jwt as driver in config/auth.php file
 ```
